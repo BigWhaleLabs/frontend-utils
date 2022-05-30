@@ -1,3 +1,3 @@
 export interface AddressToMerkleRootMap {
-  [address: number]: string;
+  [address: number]: string
 }
