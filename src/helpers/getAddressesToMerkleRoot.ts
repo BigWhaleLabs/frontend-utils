@@ -1,6 +1,9 @@
-import { AddressToMerkleRootMap } from 'models/AddressToMerkleRootMap'
 import { QUERY_BLOCK_LIMIT } from '@big-whale-labs/constants'
 import { SealCredLedger } from '@big-whale-labs/seal-cred-ledger-contract'
+
+export interface AddressToMerkleRootMap {
+  [address: number]: string
+}
 
 export async function getAddressesToMerkleRoot(sealCredLedger: SealCredLedger) {
   const setMerkleRootFilter = sealCredLedger.filters.SetMerkleRoot()
