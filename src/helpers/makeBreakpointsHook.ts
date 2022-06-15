@@ -25,9 +25,7 @@ export function makeBreakpointsHook(calcBreakPoints = calcBreakPointsDefault) {
       }
 
       window.addEventListener('resize', resizer)
-      return () => {
-        window.removeEventListener('resize', resizer)
-      }
+      return () => window.removeEventListener('resize', resizer)
     }, [])
 
     return calcBreakPoints(width)
