@@ -1,23 +1,9 @@
-name: Compile and lint
-
+name: Build and lint code
 on:
-  release:
-    types: [created]
-
+  pull_request:
+    types: [synchronize, opened]
 jobs:
-  compile-code:
+  build-and-lint-code:
     runs-on: ubuntu-latest
-    env:
-      NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: "12.x"
-          registry-url: "https://registry.npmjs.org"
-      - name: Install modules
-        run: yarn
-      - name: Lint code
-        run: yarn lint
-      - name: Compile code
-        run: yarn build
+      - uses: Borodutch/build-and-lint-code@v1.0.3
