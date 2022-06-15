@@ -323,7 +323,7 @@ __metadata:
     ethers: ^5.6.8
     np: ^7.6.1
     postcss: ^8.4.14
-    preact: ^10.7.3
+    preact: ^10.8.0
     prettier: ^2.6.2
     rollup: ^2.75.6
     rollup-plugin-dts: ^4.2.2
@@ -5606,10 +5606,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"preact@npm:^10.7.3":
-  version: 10.7.3
-  resolution: "preact@npm:10.7.3"
-  checksum: a0471da77528b9f9478c02bf60ae41754509655a19b65d9fea274a3c94c9583a7b1700e1329ee726ef6dd5307b73cf391d3f7f1b6a9ace43d71a70cd1be92737
+"preact@npm:^10.8.0":
+  version: 10.8.0
+  resolution: "preact@npm:10.8.0"
+  checksum: f9bb56f5eebf26ca28c6efbd6a31cf89224358c3cc5d273813f02794dea9605db4b449e15af9d9c4f804c48d3cf4522f990114850e51b9e17185199e174d2c2b
   languageName: node
   linkType: hard
 
