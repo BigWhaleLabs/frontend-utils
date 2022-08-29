@@ -1,8 +1,8 @@
 import { serializeError } from 'eth-rpc-errors'
 import { toast } from 'react-toastify'
 import axios, { AxiosError } from 'axios'
-import parseGSNError from 'helpers/parseGSNError'
-import parseRevertReason from 'helpers/parseRevertReason'
+import parseGSNError from './parseGSNError'
+import parseRevertReason from './parseRevertReason'
 
 export const ErrorList = {
   clear: '',
@@ -19,7 +19,10 @@ export const ErrorList = {
   pleaseReconnect: 'Lost connection with your wallet, please, reconnect',
 }
 
-function parseErrorText(error: unknown, defaultMessage = ErrorList.unknown) {
+export function parseErrorText(
+  error: unknown,
+  defaultMessage = ErrorList.unknown
+) {
   let displayedError: string | undefined
 
   if (typeof error === 'string') displayedError = error
@@ -48,7 +51,7 @@ function parseErrorText(error: unknown, defaultMessage = ErrorList.unknown) {
 
 export const ProofGenerationErrors = {}
 
-export default function (error: unknown) {
+export function handleError(error: unknown) {
   console.error(error)
 
   toast.error(parseErrorText(error))
