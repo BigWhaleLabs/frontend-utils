@@ -25,12 +25,6 @@
     "plugin:prettier/recommended"
   ],
   "rules": {
-    "no-relative-import-paths/no-relative-import-paths": [
-      "error",
-      {
-        "allowSameFolder": false
-      }
-    ],
     "import/newline-after-import": ["error"],
     "@typescript-eslint/no-floating-promises": "error",
     "require-await": "error",
