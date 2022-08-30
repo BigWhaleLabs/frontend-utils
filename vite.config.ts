@@ -1,7 +1,7 @@
-import { defineConfig } from "vite";
-import preact from "@preact/preset-vite";
-import dts from "vite-plugin-dts";
-import path from "path";
+import { defineConfig } from 'vite'
+import preact from '@preact/preset-vite'
+import dts from 'vite-plugin-dts'
+import path from 'path'
 
 export default defineConfig({
   plugins: [
@@ -12,16 +12,16 @@ export default defineConfig({
   ],
   build: {
     lib: {
-      entry: path.resolve(__dirname, "src/index.ts"),
-      name: "ui",
-      formats: ["es", "umd"],
+      entry: path.resolve(__dirname, 'src/index.ts'),
+      name: 'ui',
+      formats: ['es', 'umd'],
       fileName: (format) => `index.${format}.js`,
     },
     rollupOptions: {
-      external: ["preact", "react"],
+      external: ['preact', 'react', 'react-toastify'],
       output: {
         globals: {
-          react: "React",
+          react: 'React',
         },
       },
     },
@@ -29,4 +29,4 @@ export default defineConfig({
       transformMixedEsModules: true,
     },
   },
-});
+})
