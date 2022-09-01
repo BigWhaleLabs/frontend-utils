@@ -32,10 +32,7 @@ export function parseErrorText(
   if (message) {
     const gSNMessage = parseGSNError(message)
     const revertMessage = parseRevertReason(message)
-    if (
-      /cannot estimate gas/.test(message) ||
-      (!revertMessage && !gSNMessage)
-    ) {
+    if (/cannot estimate gas/.test(message) && !revertMessage && !gSNMessage) {
       displayedError = ErrorList.invalidProof
     } else {
       displayedError = gSNMessage || revertMessage || message
