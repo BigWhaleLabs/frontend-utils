@@ -58,7 +58,7 @@ export const ProofGenerationErrors = {}
 export function handleError(error: unknown) {
   console.error(error)
   const errorText = parseErrorText(error)
-  toast.error(errorText)
+  errorText !== ErrorList.rejectSignature && toast.error(errorText)
 
   return errorText
 }
