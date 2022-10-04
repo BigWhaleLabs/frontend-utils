@@ -1,8 +1,10 @@
 import { serializeError } from 'eth-rpc-errors'
 import { toast } from 'react-toastify'
 import axios, { AxiosError } from 'axios'
-import parseGSNError from './parseGSNError'
-import parseRevertReason from './parseRevertReason'
+import parseGSNError from 'helpers/parseGSNError'
+import parseInvalidProofError from './parseInvalidProofError'
+import parseRejectSigningError from 'helpers/parseRejectSigningError'
+import parseRevertReason from 'helpers/parseRevertReason'
 
 export const ErrorList = {
   clear: '',
@@ -17,6 +19,7 @@ export const ErrorList = {
   notExistIpfsImage: (imageId: number) =>
     `There is no image with ID ${imageId}`,
   pleaseReconnect: 'Lost connection with your wallet, please, reconnect',
+  rejectSignature: 'Please sign the transaction to create a burner wallet',
 }
 
 export function parseErrorText(
@@ -28,15 +31,19 @@ export function parseErrorText(
   if (typeof error === 'string') displayedError = error
   if (error instanceof Error || axios.isAxiosError(error))
     displayedError = error.message
+
   const message = serializeError(error).message
   if (message) {
     const gSNMessage = parseGSNError(message)
     const revertMessage = parseRevertReason(message)
-    if (/cannot estimate gas/.test(message) && !revertMessage && !gSNMessage) {
-      displayedError = ErrorList.invalidProof
-    } else {
-      displayedError = gSNMessage || revertMessage || message
-    }
+    const rejectSignatureMessage = parseRejectSigningError(message)
+    const invalidProofMessage = parseInvalidProofError(message)
+    displayedError =
+      gSNMessage ||
+      revertMessage ||
+      rejectSignatureMessage ||
+      invalidProofMessage ||
+      message
   }
 
   if (error instanceof AxiosError && error.response?.data?.message) {
@@ -50,6 +57,8 @@ export const ProofGenerationErrors = {}
 
 export function handleError(error: unknown) {
   console.error(error)
+  const errorText = parseErrorText(error)
+  toast.error(errorText)
 
-  toast.error(parseErrorText(error))
+  return errorText
 }
