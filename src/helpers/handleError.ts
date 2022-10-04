@@ -31,7 +31,6 @@ export function parseErrorText(
   if (typeof error === 'string') displayedError = error
   if (error instanceof Error || axios.isAxiosError(error))
     displayedError = error.message
-
   const message = serializeError(error).message
   if (message) {
     const gSNMessage = parseGSNError(message)
