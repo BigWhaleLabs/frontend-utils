@@ -16,18 +16,14 @@ function calcBreakPointsDefault(width: number) {
 }
 
 export function makeBreakpointsHook(calcBreakPoints = calcBreakPointsDefault) {
-  return function () {
-    const [width, setWidth] = useState(window.innerWidth)
+  const [width, setWidth] = useState(window.innerWidth)
 
-    useEffect(() => {
-      function resizer() {
-        setWidth(window.innerWidth)
-      }
+  useEffect(() => {
+    const resizer = () => setWidth(window.innerWidth)
 
-      window.addEventListener('resize', resizer)
-      return () => window.removeEventListener('resize', resizer)
-    }, [])
+    window.addEventListener('resize', resizer)
+    return () => window.removeEventListener('resize', resizer)
+  }, [])
 
-    return calcBreakPoints(width)
-  }
+  return calcBreakPoints(width)
 }
