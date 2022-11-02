@@ -1,4 +1,4 @@
-const ErrorList = {
+export default {
   clear: '',
   noProvider: 'No provider found',
   wrongNetwork: (userNetwork: string, contractNetwork: string) =>
@@ -12,5 +12,3 @@ const ErrorList = {
     `There is no image with ID ${imageId}`,
   pleaseReconnect: 'Lost connection with your wallet, please, reconnect',
 }
-
-export default ErrorList

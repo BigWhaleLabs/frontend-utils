@@ -11,7 +11,7 @@ import ErrorList from '../types/ErrorList'
 export function parseErrorText(
   error: unknown,
   defaultMessage = ErrorList.unknown
-) {
+): string {
   // 1. Define "exit" conditions, when there's a specific error type
   if (error instanceof AxiosError && error.response?.data?.message)
     return error.response.data.message

@@ -15,7 +15,7 @@ function calcBreakPointsDefault(width: number) {
   }
 }
 
-export function makeBreakpointsHook(calcBreakPoints = calcBreakPointsDefault) {
+export default function (calcBreakPoints = calcBreakPointsDefault) {
   const [width, setWidth] = useState(window.innerWidth)
 
   useEffect(() => {
