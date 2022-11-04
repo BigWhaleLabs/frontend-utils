@@ -20,9 +20,9 @@ export function parseGSNError(error: string) {
     : undefined
 }
 
-export function parseRevertReason(serializedError: string) {
+export function parseRevertReason(error: string) {
   try {
-    return JSON.parse(serializedError.split(', ')[3].replace('error=', ''))
+    return JSON.parse(error.split(', ')[3].replace('error=', ''))
       .message as string
   } catch {
     return undefined
