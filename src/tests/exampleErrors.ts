@@ -48,4 +48,8 @@ export const exampleErrors: ExampleErrors = {
     },
     shouldDisplay: ErrorList.gsnError,
   },
+  failedToRelayCall: {
+    error: 'Error: Failed to relay call. Results:',
+    shouldDisplay: ErrorList.gsnError,
+  },
 }

@@ -25,7 +25,7 @@
     "yarn": false
   },
   "scripts": {
-    "start": "vite",
+    "start": "vite build --watch",
     "release": "np",
     "test:errors": "tsc",
     "build": "cross-env NODE_ENV=production tsc && vite build",

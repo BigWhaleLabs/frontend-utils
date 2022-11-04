@@ -3,6 +3,7 @@ import { ErrorList } from '../types/ErrorList'
 import {
   parseCannotEstimateGasError,
   parseGSNError,
+  parseMetamaskReason,
   parseRevertReason,
 } from './errorParsers'
 import { serializeError } from 'eth-rpc-errors'
@@ -21,16 +22,18 @@ export function parseError(
   if (typeof error === 'string') displayedError = error
   if (error instanceof Error) displayedError = error.message
 
-  // 3. Serialize the error and set it to return in the end
+  // 3. Try to extract the reason from string errors
+  const parsedError =
+    parseMetamaskReason(displayedError) ||
+    parseGSNError(displayedError) ||
+    parseRevertReason(displayedError) ||
+    parseCannotEstimateGasError(displayedError)
+  if (parsedError) displayedError = parsedError
+
+  // 4. Try to serialize it to RPC error
   const serializedMessage = serializeError(displayedError || error, {
     shouldIncludeStack: false,
   }).message
 
-  const gsnRelatedMessage =
-    parseGSNError(serializedMessage) || parseRevertReason(serializedMessage)
-  const cannotEstimateGasError = parseCannotEstimateGasError(serializedMessage)
-  if (cannotEstimateGasError) displayedError = ErrorList.invalidProof
-  if (gsnRelatedMessage) displayedError = gsnRelatedMessage
-
-  return displayedError || defaultMessage
+  return displayedError || serializedMessage || defaultMessage
 }
