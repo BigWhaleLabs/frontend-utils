@@ -1,12 +1,12 @@
 import { AxiosError } from 'axios'
 import { ErrorList } from '../types/ErrorList'
+import { hasMessage } from './hasMessage'
 import {
   parseCannotEstimateGasError,
   parseGSNError,
   parseMetamaskReason,
   parseRevertReason,
 } from './errorParsers'
-import { serializeError } from 'eth-rpc-errors'
 
 export function parseError(
   error: unknown,
@@ -16,24 +16,16 @@ export function parseError(
   if (error instanceof AxiosError && error.response?.data?.message)
     return error.response.data.message
 
-  // 2. Get the message from the error, if possible
-  let displayedError = ''
+  // 2. Get the message from string error, if possible
+  if (typeof error === 'string' || hasMessage(error)) {
+    const message = hasMessage(error) ? error.message : error
+    const parsedError =
+      parseMetamaskReason(message) ||
+      parseGSNError(message) ||
+      parseRevertReason(message) ||
+      parseCannotEstimateGasError(message)
+    return parsedError || message
+  }
 
-  if (typeof error === 'string') displayedError = error
-  if (error instanceof Error) displayedError = error.message
-
-  // 3. Try to extract the reason from string errors
-  const parsedError =
-    parseMetamaskReason(displayedError) ||
-    parseGSNError(displayedError) ||
-    parseRevertReason(displayedError) ||
-    parseCannotEstimateGasError(displayedError)
-  if (parsedError) displayedError = parsedError
-
-  // 4. Try to serialize it to RPC error
-  const serializedMessage = serializeError(displayedError || error, {
-    shouldIncludeStack: false,
-  }).message
-
-  return displayedError || serializedMessage || defaultMessage
+  return defaultMessage
 }

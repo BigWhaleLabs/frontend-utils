@@ -70,7 +70,6 @@
   "packageManager": "yarn@3.2.3",
   "dependencies": {
     "axios": "^0.27.2",
-    "eth-rpc-errors": "^4.0.3",
     "react-toastify": "^9.0.8"
   }
 }

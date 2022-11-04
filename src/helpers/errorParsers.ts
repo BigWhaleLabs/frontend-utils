@@ -13,8 +13,9 @@ export function parseMetamaskReason(error: string) {
 }
 
 export function parseGSNError(error: string) {
-  return error.includes('Insufficient funds') ||
-    error.includes("reading 'error'")
+  return error.includes('insufficient funds') ||
+    error.includes("reading 'error'") ||
+    error.includes('Failed to relay call')
     ? ErrorList.gsnError
     : undefined
 }
