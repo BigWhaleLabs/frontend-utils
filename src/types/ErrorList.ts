@@ -1,4 +1,4 @@
-export default {
+export const ErrorList = {
   clear: '',
   noProvider: 'No provider found',
   wrongNetwork: (userNetwork: string, contractNetwork: string) =>

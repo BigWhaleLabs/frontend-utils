@@ -20,5 +20,5 @@ export default {
   },
   method: 'post',
   url: 'https://verify.sealcred.xyz/v0.2.1/verify/contract-metadata',
-  data: '{"tokenAddress":"0x57f1887a8bf19b14fc0df6fd9b2acc9af147ea85","network":"Mainnet"}',
+  data: '{"tokenAddress":"0x0000000000000000000000000000000000000000","network":"Mainnet"}',
 }

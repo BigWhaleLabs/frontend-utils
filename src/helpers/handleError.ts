@@ -1,4 +1,5 @@
 import { AxiosError } from 'axios'
+import { ErrorList } from '../types/ErrorList'
 import {
   parseCannotEstimateGasError,
   parseGSNError,
@@ -6,7 +7,6 @@ import {
 } from './errorParsers'
 import { serializeError } from 'eth-rpc-errors'
 import { toast } from 'react-toastify'
-import ErrorList from '../types/ErrorList'
 
 export function parseErrorText(
   error: unknown,
