@@ -1,18 +1,8 @@
 import { ErrorList } from '../types/ErrorList'
+import { expect, test } from '@jest/globals'
+import { parseError } from '../helpers/parseError'
 
-interface ExampleErrors {
-  [errorName: string]: {
-    error: string | Record<string, unknown>
-    shouldDisplay: string
-  }
-}
-
-export const exampleErrors: ExampleErrors = {
-  unhandledRejection: {
-    error:
-      "Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'error')",
-    shouldDisplay: ErrorList.unknown,
-  },
+const exampleErrors = {
   axiosError: {
     error: {
       transitional: {
@@ -52,4 +42,16 @@ export const exampleErrors: ExampleErrors = {
     error: 'Error: Failed to relay call. Results:',
     shouldDisplay: ErrorList.gsnError,
   },
+  unhandledRejection: {
+    error:
+      "Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'error')",
+    shouldDisplay: ErrorList.gsnError,
+  },
 }
+
+test('Error parser test', () => {
+  Object.values(exampleErrors).forEach(({ error, shouldDisplay }) => {
+    const parsedError = parseError(error)
+    expect(parsedError).toBe(shouldDisplay)
+  })
+})
