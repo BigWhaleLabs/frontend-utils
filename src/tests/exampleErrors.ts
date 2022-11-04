@@ -1,4 +1,4 @@
-import { ErrorList } from 'types/ErrorList'
+import { ErrorList } from '../types/ErrorList'
 
 interface ExampleErrors {
   [errorName: string]: {
