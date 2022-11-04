@@ -11,4 +11,5 @@ export const ErrorList = {
   notExistIpfsImage: (imageId: number) =>
     `There is no image with ID ${imageId}`,
   pleaseReconnect: 'Lost connection with your wallet, please, reconnect',
+  gsnError: 'Something happened with our GSN relay, please, try again',
 }
