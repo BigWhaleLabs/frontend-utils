@@ -13,8 +13,6 @@ export function parseMetamaskReason(error: string) {
 }
 
 export function parseGSNError(error: string) {
-  console.log(error)
-  console.log(error.includes("reading 'error'"))
   return error.includes('Insufficient funds') ||
     error.includes("reading 'error'")
     ? ErrorList.gsnError
