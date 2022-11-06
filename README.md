@@ -11,6 +11,7 @@
 
 ## Available Scripts
 
-- `yarn start` — development mode
+- `yarn start` — development mode, rebuilds on changes
 - `yarn build` — builds utils
 - `yarn release` — create a release and publish the package
+- `yarn test` to test error parsers

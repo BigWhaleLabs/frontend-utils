@@ -18,7 +18,13 @@ export default defineConfig({
       fileName: (format) => `index.${format}.js`,
     },
     rollupOptions: {
-      external: ['preact', 'react', 'react-toastify'],
+      external: [
+        'preact',
+        'react',
+        'reactToastify',
+        '/__tests__/',
+        '/testHelpers/',
+      ],
       output: {
         globals: {
           react: 'React',
