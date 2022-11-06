@@ -26,7 +26,7 @@
   },
   "scripts": {
     "start": "vite build --watch",
-    "release": "np",
+    "release": "np --any-branch",
     "test": "jest",
     "build": "cross-env NODE_ENV=production tsc && vite build",
     "pretty": "prettier --check src",
