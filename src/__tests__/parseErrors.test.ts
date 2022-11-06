@@ -1,5 +1,5 @@
 import { expect, test } from '@jest/globals'
-import { negativeExamples, positiveExamples } from '../helpers/exapleErrors'
+import { negativeExamples, positiveExamples } from '../testHelpers/exapleErrors'
 import { parseError } from '../helpers/parseError'
 
 test('Error parser test', () => {

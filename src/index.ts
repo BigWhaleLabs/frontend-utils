@@ -1,5 +1,5 @@
 export * from './helpers/handleError'
-export * from './testHelpers/errorParsers'
+export * from './helpers/errorParsers'
 export * from './helpers/parseError'
 export * from './types/ErrorList'
 export * from './helpers/makeBreakpointsHook'
