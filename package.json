@@ -30,7 +30,7 @@
     "test": "jest",
     "build": "cross-env NODE_ENV=production tsc && vite build",
     "pretty": "prettier --check src",
-    "lint": "yarn pretty && eslint --max-warnings 0 --ext ts,tsx,json src",
+    "lint": "yarn pretty && eslint --max-warnings 0 --ext ts,tsx,json src && yarn test",
     "prepublishOnly": "yarn lint && yarn build"
   },
   "eslintConfig": {

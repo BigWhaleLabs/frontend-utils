@@ -6,7 +6,7 @@ import {
   parseGSNError,
   parseMetamaskReason,
   parseRevertReason,
-} from './errorParsers'
+} from '../testHelpers/errorParsers'
 
 export function parseError(
   error: unknown,

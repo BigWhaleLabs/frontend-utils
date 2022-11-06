@@ -14,4 +14,4 @@
 - `yarn start` — development mode, rebuilds on changes
 - `yarn build` — builds utils
 - `yarn release` — create a release and publish the package
-- `yarn test:errors` to test error parsers
+- `yarn test` to test error parsers
