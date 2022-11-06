@@ -1,6 +1,6 @@
 import { ErrorList } from '../types/ErrorList'
 
-export const exampleErrors = {
+export const positiveExamples = {
   axiosError: {
     error: {
       message: 'Request failed with status code 400',
@@ -50,5 +50,17 @@ export const exampleErrors = {
     error:
       "Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'error')",
     shouldDisplay: ErrorList.gsnError,
+  },
+}
+
+export const negativeExamples = {
+  failedToRelayCall: {
+    error: 'Error: Failed to relay call. Results:',
+    shouldDisplay: ErrorList.unknown,
+  },
+  unhandledRejection: {
+    error:
+      "Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'error')",
+    shouldDisplay: ErrorList.unknown,
   },
 }
