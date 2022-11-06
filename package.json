@@ -1,6 +1,6 @@
 {
   "name": "@big-whale-labs/frontend-utils",
-  "version": "0.1.0",
+  "version": "0.0.10",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -30,7 +30,8 @@
     "test": "jest",
     "build": "cross-env NODE_ENV=production tsc && vite build",
     "pretty": "prettier --check src",
-    "lint": "yarn pretty && eslint --max-warnings 0 --ext ts,tsx,json src"
+    "lint": "yarn pretty && eslint --max-warnings 0 --ext ts,tsx,json src",
+    "prepublishOnly": "yarn lint && yarn build && yarn test"
   },
   "eslintConfig": {
     "extends": [
