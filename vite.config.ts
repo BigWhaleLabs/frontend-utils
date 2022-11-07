@@ -21,7 +21,7 @@ export default defineConfig({
       external: [
         'preact',
         'react',
-        'reactToastify',
+        'react-toastify',
         '/__tests__/',
         '/testHelpers/',
       ],
